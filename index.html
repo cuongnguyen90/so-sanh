@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tim kiem</title>
+</head>
+<body>
+<script>
+
+
+    let arr = new Array();
+
+    for (i = 0 ;i < 10 ;i++){
+        random = Math.floor(Math.random()*100);
+        arr.push(random);
+    }
+    arr.sort(function(a, b){return a - b})
+
+    num = prompt('Nhap so can tim');
+
+    //tuyenTinh(num);
+
+
+    binarySearch(num);
+
+    // Tuyen tinh
+
+    function tuyenTinh(num) {
+        for (j = 0;j < arr.length;j++){
+            num == arr[j] ? console.log("trung") : console.log("khong trung");break;
+
+        }
+    }
+
+    function binarySearch(i) {
+        var mid = Math.floor(arr.length / 2);
+        //console.log(arr[mid], i);
+
+        if (arr[mid] === i) {
+            console.log('match', arr[mid]);
+            return arr[mid];
+        } else if (arr[mid] < i && arr.length > 1) {
+            console.log('mid lower', arr[mid]);
+            binarySearch(arr.splice(mid, Number.MAX_VALUE), i);
+        } else if (arr[mid] > i && arr.length > 1) {
+            console.log('mid higher', arr[mid]);
+            binarySearch(arr.splice(0, mid));
+        } else {
+            console.log('not here', i);
+            return -1;
+        }
+
+    }
+</script>
+</body>
+</html>
